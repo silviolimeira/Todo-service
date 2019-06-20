@@ -10,8 +10,8 @@ $ npm install -g @angular/cli
 $ ng add @angular/pwa
 
 # git creating tag version
-git tag -a v1.0 -m "pwa application"
-git push origin :refs/tags/v1.0
+$ git tag -a v1.0 -m "pwa application"
+$ git push origin v1.0
 
   # delete the tag version
   $ git push origin --delete <tagname>
