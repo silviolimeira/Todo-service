@@ -1,0 +1,23 @@
+Building an Ionic Chat with Socket.io
+https://devdactic.com/ionic-realtime-socket-io/
+
+https://angularfirebase.com/lessons/ionic-4-routing-and-navigation-guide/
+
+Building our Node Chat Server
+
+#Create a new Node Server
+$ mkdir SocketServer && cd SocketServer
+$ npm init -y
+$ npm install --save express socket.io socket.io-client 
+
+Start the Server
+$ node index.js
+
+#Starting the Ionic Chat APP
+$ ionic start clientSocket blank
+$ cd clientSocket
+$ npm install  --save ng-socket-io rxjs-compat socket.io-client 
+
+$ ionic g page chatRoom
+
+
