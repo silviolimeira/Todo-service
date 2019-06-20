@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { StateService } from 'src/app/services/state/state.service';
 import { Observable } from "rxjs";
 
 @Component({
@@ -14,7 +13,7 @@ export class ItemComponent implements OnInit {
   message: string = '';
   message1: string = '';
 
-  constructor(private service:StateService) { 
+  constructor(/*private service:StateService*/) { 
     //this.mensagem = '';
     //this.mensagem1 = '';
   }

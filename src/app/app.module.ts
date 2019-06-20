@@ -10,6 +10,8 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { SocketIoConfig, SocketIoModule } from 'ng-socket-io';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const config: SocketIoConfig = { url: "http://localhost:3001", options: {} };
 
@@ -21,7 +23,8 @@ const config: SocketIoConfig = { url: "http://localhost:3001", options: {} };
     ComponentsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,

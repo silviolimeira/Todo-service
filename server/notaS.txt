@@ -4,6 +4,12 @@ https://devdactic.com/ionic-realtime-socket-io/
 https://angularfirebase.com/lessons/ionic-4-routing-and-navigation-guide/
 
 Building our Node Chat Server
+http://masteringionic.com/blog/2019-02-03-creating-a-progressive-web-app-in-ionic-4/
+
+$ npm install -g @angular/cli
+
+$ ng add @angular/pwa
+
 
 #Create a new Node Server
 $ mkdir SocketServer && cd SocketServer

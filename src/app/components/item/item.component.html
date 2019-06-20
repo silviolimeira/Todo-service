@@ -7,7 +7,7 @@
 <ion-content>
   <div class="ion-padding">
     <ion-item>
-      <button ion-button full (click)="joinChat()" [disabled]="nickname === ''">
+      <button ion-button full (click)="sendMessage('teste')" [disabled]="nickname === ''">
         Join Chat as {{ nickname }}
       </button>
       <ion-label stacked>Set Nickname</ion-label>
