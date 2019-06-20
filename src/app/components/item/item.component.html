@@ -1,4 +1,21 @@
-<p>
-  item works!
-</p>
-Mensagem: {{ mensagem }}
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Join Chat Item {{ nickname }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-item>
+      <button ion-button full (click)="joinChat()" [disabled]="nickname === ''">
+        Join Chat as {{ nickname }}
+      </button>
+      <ion-label stacked>Set Nickname</ion-label>
+      <ion-input
+        type="text"
+        [(ngModel)]="nickname"
+        placeholder="Nickname"
+      ></ion-input>
+    </ion-item>
+  </div>
+</ion-content>

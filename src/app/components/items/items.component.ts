@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemsComponent implements OnInit {
 
-  mensagem = '123...';
+  nickname = '';
 
   constructor() { }
 

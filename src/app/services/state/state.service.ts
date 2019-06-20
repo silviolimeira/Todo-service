@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class StateService {
 
-  mensagem = "mensagem state service";
+  //mensagem = "mensagem state service";
   constructor() { }
 }
