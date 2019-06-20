@@ -1,0 +1,7 @@
+{
+  "name": "todo-service1",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
