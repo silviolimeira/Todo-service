@@ -11,6 +11,13 @@ $ ng add @angular/pwa
 
 # git creating tag version
 git tag -a v1.0 -m "pwa application"
+git push origin :refs/tags/v1.0
+
+  # delete the tag version
+  $ git push origin --delete <tagname>
+
+  # generate branch with tag version 
+  $ git checkout -b version2 v2.0.0
 
 #Create a new Node Server
 $ mkdir SocketServer && cd SocketServer
