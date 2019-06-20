@@ -35,6 +35,9 @@ $ ionic g component components/items --flat false
 Debugging of unit tests easier:
 $ ionic test --source-map=false
 
+Install ng-socket-io
+$ npm install  --save ng-socket-io rxjs-compat socket.io-client 
+
 Generating services module
 $ ionic g module services --flat false
    after create we need to modify file app.module.ts to add the impport

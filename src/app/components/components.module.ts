@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ChatRoomComponent } from './chat-room/chat-room.component';
 
 @NgModule({
   imports: [
@@ -25,8 +26,8 @@ import { RouterModule } from '@angular/router';
     // ])
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [ItemsComponent, ItemComponent],
-  exports: [ItemsComponent, ItemComponent]
+  declarations: [ItemsComponent, ItemComponent, ChatRoomComponent],
+  exports: [ItemsComponent, ItemComponent, ChatRoomComponent]
 
 
 })
