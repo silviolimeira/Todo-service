@@ -5,11 +5,12 @@ https://angularfirebase.com/lessons/ionic-4-routing-and-navigation-guide/
 
 Building our Node Chat Server
 http://masteringionic.com/blog/2019-02-03-creating-a-progressive-web-app-in-ionic-4/
-
 $ npm install -g @angular/cli
 
 $ ng add @angular/pwa
 
+# git creating tag version
+git tag -a v1.0 -m "pwa application"
 
 #Create a new Node Server
 $ mkdir SocketServer && cd SocketServer
