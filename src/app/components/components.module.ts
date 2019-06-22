@@ -8,12 +8,14 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { ChatRoomComponent } from "./chat-room/chat-room.component";
 import { LoginChatComponent } from "./login-chat/login-chat.component";
+import { ControllersModule } from '../controllers/controllers.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule
+    IonicModule,
+    // ControllersModule
     // RouterModule.forChild([
     // {
     //   path: '',

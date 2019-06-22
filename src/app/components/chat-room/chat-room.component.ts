@@ -4,6 +4,8 @@ import { Socket } from "ng-socket-io";
 import { Router, ActivatedRoute } from "@angular/router";
 import { ToastController } from "@ionic/angular";
 import { Observable } from "rxjs";
+import { ActivityComponent } from 'src/app/controllers/activity.component';
+import { Enrolled } from 'src/app/models/enrolled';
 
 @Component({
   selector: 'app-chat-room',
@@ -20,7 +22,7 @@ export class ChatRoomComponent implements OnInit {
     public router: Router,
     private route: ActivatedRoute,
     private socket: Socket,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
   ) {}
 
   ngOnInit() {
@@ -34,8 +36,15 @@ export class ChatRoomComponent implements OnInit {
       let user = data["user"];
       if (data["event"] === "left") {
         this.showToast("User left: " + user);
+        let enrolled = new Enrolled();
+        enrolled.name = user;
+        let activity = new ActivityComponent();
+        activity.remove(enrolled)
       } else {
-        this.showToast("User joined: " + user);
+        let enrolled = new Enrolled();
+        enrolled.name = user;
+        let activity = new ActivityComponent();
+        activity.add(enrolled);
       }
     });
   }
