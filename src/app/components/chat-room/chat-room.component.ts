@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 import { Socket } from "ng-socket-io";
 import { Router, ActivatedRoute } from "@angular/router";
 import { ToastController } from "@ionic/angular";
 import { Observable } from "rxjs";
-import { ActivityComponent } from 'src/app/controllers/activity.component';
-import { Enrolled } from 'src/app/models/enrolled';
+import { ActivityComponent } from "src/app/controllers/activity.component";
+import { Enrolled } from "src/app/models/enrolled";
+import { StateService } from "src/app/services/state/state.service";
 
 @Component({
-  selector: 'app-chat-room',
-  templateUrl: './chat-room.component.html',
-  styleUrls: ['./chat-room.component.scss'],
+  selector: "app-chat-room",
+  templateUrl: "./chat-room.component.html",
+  styleUrls: ["./chat-room.component.scss"]
 })
 export class ChatRoomComponent implements OnInit {
-
   messages = [];
   nickname = "";
   message = "";
@@ -23,6 +23,7 @@ export class ChatRoomComponent implements OnInit {
     private route: ActivatedRoute,
     private socket: Socket,
     private toastCtrl: ToastController,
+    private stateService: StateService
   ) {}
 
   ngOnInit() {
@@ -38,12 +39,12 @@ export class ChatRoomComponent implements OnInit {
         this.showToast("User left: " + user);
         let enrolled = new Enrolled();
         enrolled.name = user;
-        let activity = new ActivityComponent();
-        activity.remove(enrolled)
+        let activity = new ActivityComponent(this.stateService);
+        activity.remove(enrolled);
       } else {
         let enrolled = new Enrolled();
         enrolled.name = user;
-        let activity = new ActivityComponent();
+        let activity = new ActivityComponent(this.stateService);
         activity.add(enrolled);
       }
     });
@@ -88,6 +89,4 @@ export class ChatRoomComponent implements OnInit {
         toastData.present();
       });
   }
-
-
 }

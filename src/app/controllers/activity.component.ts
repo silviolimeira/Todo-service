@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Enrolleds } from "../models/enrolleds";
 import { Enrolled } from "../models/enrolled";
+import { StateService } from "../services/state/state.service";
 
 @Component({
   selector: "app-activity",
@@ -10,21 +11,18 @@ import { Enrolled } from "../models/enrolled";
 export class ActivityComponent implements OnInit {
   enrolleds: Enrolleds;
 
-  constructor() {
-    this.enrolleds = new Enrolleds();
+  constructor(private stateService: StateService) {
+    this.enrolleds = new Enrolleds(stateService);
   }
 
-
-  ngOnInit() {
-    this.enrolleds = new Enrolleds();
-  }
+  ngOnInit() {}
 
   add(enrolled: Enrolled) {
     // let enrolled = new Enrolled();
     // enrolled.name = user;
     console.log("##### ##> enrolled:", enrolled);
     this.enrolleds.add(enrolled);
-    console.log('##### ##>> ActivityComponent.add: ', enrolled);
+    console.log("##### ##>> ActivityComponent.add: ", enrolled);
   }
 
   public remove(enrolled: Enrolled) {

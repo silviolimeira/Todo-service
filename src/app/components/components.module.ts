@@ -9,6 +9,7 @@ import { RouterModule } from "@angular/router";
 import { ChatRoomComponent } from "./chat-room/chat-room.component";
 import { LoginChatComponent } from "./login-chat/login-chat.component";
 import { ControllersModule } from '../controllers/controllers.module';
+import { TotalEnrolledsComponent } from './total-enrolleds/total-enrolleds.component';
 
 @NgModule({
   imports: [
@@ -32,13 +33,15 @@ import { ControllersModule } from '../controllers/controllers.module';
     ItemsComponent,
     ItemComponent,
     ChatRoomComponent,
-    LoginChatComponent
+    LoginChatComponent,
+    TotalEnrolledsComponent,
   ],
   exports: [
     ItemsComponent,
     ItemComponent,
     ChatRoomComponent,
-    LoginChatComponent
+    LoginChatComponent,
+    TotalEnrolledsComponent
   ]
 })
 export class ComponentsModule {}

@@ -51,6 +51,9 @@ Generating Top Stories page
 $ ionic g module top-stories --routing
 $ ionic g component top-stories -m top-stories
 
+Generate pipe:
+ionic g pipe components/totalEnrolleds --flat false
+
 Generate Items Loading Service Mock
 $ touch src/app/services/item/item.service.mock.ts
 Install lodash.range
