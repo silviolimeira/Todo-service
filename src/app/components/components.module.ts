@@ -8,14 +8,15 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { ChatRoomComponent } from "./chat-room/chat-room.component";
 import { LoginChatComponent } from "./login-chat/login-chat.component";
-import { ControllersModule } from '../controllers/controllers.module';
-import { TotalEnrolledsComponent } from './total-enrolleds/total-enrolleds.component';
+import { ControllersModule } from "../controllers/controllers.module";
+import { TotalEnrolledsComponent } from "./total-enrolleds/total-enrolleds.component";
+import { EnrolledsComponent } from "./enrolleds/enrolleds.component";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
+    IonicModule
     // ControllersModule
     // RouterModule.forChild([
     // {
@@ -35,13 +36,15 @@ import { TotalEnrolledsComponent } from './total-enrolleds/total-enrolleds.compo
     ChatRoomComponent,
     LoginChatComponent,
     TotalEnrolledsComponent,
+    EnrolledsComponent
   ],
   exports: [
     ItemsComponent,
     ItemComponent,
     ChatRoomComponent,
     LoginChatComponent,
-    TotalEnrolledsComponent
+    TotalEnrolledsComponent,
+    EnrolledsComponent
   ]
 })
 export class ComponentsModule {}

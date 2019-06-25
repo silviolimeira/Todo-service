@@ -16,18 +16,16 @@ import { Observable } from "rxjs";
   styleUrls: ["./total-enrolleds.component.scss"]
 })
 export class TotalEnrolledsComponent implements OnInit, OnDestroy {
-  valor: number;
   total: Observable<number>;
 
   constructor(private stateService: StateService) {
     this.total = this.stateService.getCountersObservervable();
-
-    console.log("total-enrolleds-component, constructor, total: ", this.total);
+    // console.log("total-enrolleds-component, constructor, total: ", this.list);
   }
 
   ngOnInit() {
     // this.observer = this.counterService.getObserver();
-    console.log("total-enrolleds-component, ngOnInit, total: ", this.total);
+    // console.log("total-enrolleds-component, ngOnInit, total: ", this.list);
   }
 
   ngOnDestroy() {
