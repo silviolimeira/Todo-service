@@ -38,7 +38,7 @@ export class ChatRoomComponent implements OnInit {
       let user = data["user"];
       if (data["event"] === "left") {
         this.showToast("User left: " + user);
-        this.activity.remove();
+        this.activity.remove(user);
         // let enrolled = new Enrolled();
         // enrolled.name = user;
         // let activity = new ActivityComponent(this.stateService);
@@ -49,7 +49,7 @@ export class ChatRoomComponent implements OnInit {
         // let activity = new ActivityComponent(this.stateService);
         // activity.add(enrolled);
         this.showToast("User:" + user);
-        this.activity.add();
+        this.activity.add(user);
       }
     });
   }

@@ -7,10 +7,6 @@ import {
   ChangeDetectionStrategy
 } from "@angular/core";
 import { StateService } from "src/app/services/state/state.service";
-import { Subject } from "rxjs";
-import { Observer as myObserver } from "src/app/services/state/observer";
-import { ActivityService } from "src/app/services/activity/activity.service";
-// import { Observable, Observer, Subscription, timer, AsyncSubject } from "rxjs";
 import { Observable } from "rxjs";
 
 @Component({
@@ -25,6 +21,7 @@ export class TotalEnrolledsComponent implements OnInit, OnDestroy {
 
   constructor(private stateService: StateService) {
     this.total = this.stateService.getCountersObservervable();
+
     console.log("total-enrolleds-component, constructor, total: ", this.total);
   }
 

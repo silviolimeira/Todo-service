@@ -1,8 +1,5 @@
 import { Injectable } from "@angular/core";
 
-import { StateService } from "../state/state.service";
-import { Observer as myObserver } from "../state/observer";
-import { ActivityService } from "../activity/activity.service";
 import { Observable, Observer } from "rxjs";
 
 @Injectable({
