@@ -10,8 +10,8 @@ import { StateService } from "src/app/services/state/state.service";
 import { Subject } from "rxjs";
 import { Observer as myObserver } from "src/app/services/state/observer";
 import { ActivityService } from "src/app/services/activity/activity.service";
-import { CountersService } from "src/app/services/counters/counters.service";
 // import { Observable, Observer, Subscription, timer, AsyncSubject } from "rxjs";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-total-enrolleds",
@@ -20,11 +20,11 @@ import { CountersService } from "src/app/services/counters/counters.service";
   styleUrls: ["./total-enrolleds.component.scss"]
 })
 export class TotalEnrolledsComponent implements OnInit, OnDestroy {
-  total: number;
+  valor: number;
+  total: Observable<number>;
 
-  observer: any;
-
-  constructor(private counterService: CountersService) {
+  constructor(private stateService: StateService) {
+    this.total = this.stateService.getCountersObservervable();
     console.log("total-enrolleds-component, constructor, total: ", this.total);
   }
 
@@ -35,6 +35,6 @@ export class TotalEnrolledsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // this.stateService.unsubscribe();
-    this.observer.unsubscribe();
+    //this.observer.unsubscribe();
   }
 }

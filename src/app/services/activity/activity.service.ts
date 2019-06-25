@@ -12,13 +12,13 @@ export class ActivityService {
 
   add() {
     this.totalEnrolled++;
-    this.stateService.notifyTotalObserver();
+    this.stateService.getCountersObserver().next(this.totalEnrolled);
     console.log("ActivityService, totalEnrolled: ", this.totalEnrolled);
   }
 
   remove() {
     if (this.totalEnrolled > 0) this.totalEnrolled--;
-    this.stateService.notifyTotalObserver();
+    this.stateService.getCountersObserver().next(this.totalEnrolled);
     console.log("ActivityService, totalEnrolled: ", this.totalEnrolled);
   }
 

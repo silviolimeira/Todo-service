@@ -4,32 +4,20 @@ import { Injectable } from "@angular/core";
 import { Observer as myObserver } from "./observer";
 import { Subject as mySubject } from "./subject";
 import { ActivityService } from "../activity/activity.service";
+import { Observable } from "rxjs";
+import { CountersService } from "../counters/counters.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class StateService {
-  totalSubject: mySubject;
-  // totalObserver: myObserver;
+  constructor(private counters: CountersService) {}
 
-  constructor() {
-    this.totalSubject = new mySubject();
-    // this.totalObserver = <myObserver>{
-    //   update: () => {
-    //     console.log("First Observer Updated");
-    //   }
-    // }
+  getCountersObserver() {
+    return this.counters.observer;
   }
 
-  atachTotalObserver(observer: myObserver) {
-    this.totalSubject.attach(observer);
-  }
-
-  notifyTotalObserver() {
-    this.totalSubject.notify();
-  }
-
-  getTotalSubject() {
-    return this.totalSubject;
+  getCountersObservervable() {
+    return this.counters.observable;
   }
 }
