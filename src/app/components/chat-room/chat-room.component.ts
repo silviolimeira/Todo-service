@@ -7,6 +7,7 @@ import { Observable } from "rxjs";
 import { ActivityComponent } from "src/app/controllers/activity.component";
 import { Enrolled } from "src/app/models/enrolled";
 import { StateService } from "src/app/services/state/state.service";
+import { ActivityService } from "src/app/services/activity/activity.service";
 
 @Component({
   selector: "app-chat-room",
@@ -23,7 +24,7 @@ export class ChatRoomComponent implements OnInit {
     private route: ActivatedRoute,
     private socket: Socket,
     private toastCtrl: ToastController,
-    private stateService: StateService
+    private activity: ActivityService
   ) {}
 
   ngOnInit() {
@@ -37,15 +38,18 @@ export class ChatRoomComponent implements OnInit {
       let user = data["user"];
       if (data["event"] === "left") {
         this.showToast("User left: " + user);
-        let enrolled = new Enrolled();
-        enrolled.name = user;
-        let activity = new ActivityComponent(this.stateService);
-        activity.remove(enrolled);
+        this.activity.remove();
+        // let enrolled = new Enrolled();
+        // enrolled.name = user;
+        // let activity = new ActivityComponent(this.stateService);
+        // activity.remove(enrolled);
       } else {
-        let enrolled = new Enrolled();
-        enrolled.name = user;
-        let activity = new ActivityComponent(this.stateService);
-        activity.add(enrolled);
+        // let enrolled = new Enrolled();
+        // enrolled.name = user;
+        // let activity = new ActivityComponent(this.stateService);
+        // activity.add(enrolled);
+        this.showToast("User:" + user);
+        this.activity.add();
       }
     });
   }

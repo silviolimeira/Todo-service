@@ -1,23 +1,34 @@
 import { Injectable } from "@angular/core";
 
+import { StateService } from "../state/state.service";
+import { Observer as myObserver } from "../state/observer";
+import { ActivityService } from "../activity/activity.service";
+
 @Injectable({
   providedIn: "root"
 })
 export class CountersService {
-  totalEnrolleds: number;
-  constructor() {
-    this.totalEnrolleds = 0;
+  observer: myObserver;
+  total: number;
+
+  constructor(
+    private stateService: StateService,
+    private activity: ActivityService
+  ) {
+    this.observer = <myObserver>{
+      update: () => {
+        this.total = activity.getTotalEnrolled();
+        console.log("CounterService Updated, total: ", this.total);
+      }
+    };
+    stateService.atachTotalObserver(this.observer);
   }
 
-  add() {
-    this.totalEnrolleds++;
+  getObserver() {
+    return this.observer;
   }
 
-  dec() {
-    if (this.totalEnrolleds > 0) this.totalEnrolleds--;
-  }
-
-  total() {
-    return this.totalEnrolleds;
+  notify() {
+    this.stateService.notifyTotalObserver();
   }
 }

@@ -1,6 +1,13 @@
 TotalEnrolleds:
-<strong>{{ totalEnrolled | async }}</strong>
+<!-- <strong>{{ totalEnrolled | async }}</strong> -->
+
 <!-- <strong [totalEnrolled]="totalEnrolled">{{ totalEnrolled }}</strong> -->
 <!-- <strong>{{ totalEnrolled }}</strong> -->
 <!-- <app-total-enrolleds [totalEnrolled]="totalEnrolled"></app-total-enrolleds> -->
 <!-- <strong>{{ totalEnrolled }}</strong> -->
+
+<!-- Total: <strong [(ngModel)]="total">{{ total }}</strong> -->
+<!-- <strong *ngIf="valor | async">Total: {{ valor }}</strong> -->
+
+<!-- <div *ngIf="total">valor: {{ total }}</div> -->
+<strong>{{ observer | async }}</strong>

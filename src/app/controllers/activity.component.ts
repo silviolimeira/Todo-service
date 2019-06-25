@@ -17,15 +17,13 @@ export class ActivityComponent implements OnInit {
 
   ngOnInit() {}
 
-  add(enrolled: Enrolled) {
-    // let enrolled = new Enrolled();
-    // enrolled.name = user;
-    console.log("##### ##> enrolled:", enrolled);
-    this.enrolleds.add(enrolled);
-    console.log("##### ##>> ActivityComponent.add: ", enrolled);
-  }
+  // add(enrolled: Enrolled) {
+  //   console.log("##### ##> enrolled:", enrolled);
+  //   this.enrolleds.add(enrolled);
+  //   console.log("##### ##>> ActivityComponent.add: ", enrolled);
+  // }
 
-  public remove(enrolled: Enrolled) {
-    this.enrolleds.remove(enrolled);
-  }
+  // public remove(enrolled: Enrolled) {
+  //   this.enrolleds.remove(enrolled);
+  // }
 }

@@ -7,8 +7,11 @@ import {
   ChangeDetectionStrategy
 } from "@angular/core";
 import { StateService } from "src/app/services/state/state.service";
-import { Observable, Observer, Subscription, timer, AsyncSubject } from "rxjs";
-// import { timingSafeEqual } from 'crypto';
+import { Subject } from "rxjs";
+import { Observer as myObserver } from "src/app/services/state/observer";
+import { ActivityService } from "src/app/services/activity/activity.service";
+import { CountersService } from "src/app/services/counters/counters.service";
+// import { Observable, Observer, Subscription, timer, AsyncSubject } from "rxjs";
 
 @Component({
   selector: "app-total-enrolleds",
@@ -19,26 +22,19 @@ import { Observable, Observer, Subscription, timer, AsyncSubject } from "rxjs";
 export class TotalEnrolledsComponent implements OnInit, OnDestroy {
   total: number;
 
-  totalEnrolled: Observable<number>;
+  observer: any;
 
-  ngOnInit() {
-    this.totalEnrolled = this.stateService.getObservable();
+  constructor(private counterService: CountersService) {
+    console.log("total-enrolleds-component, constructor, total: ", this.total);
   }
 
-  // totalEnrolled = Observable.create(observer => {
-  //   let counter = 0;
-  //   let id = setInterval(
-  //     () => observer.next(this.stateService.totalEmrolled()),
-  //     10000
-  //   );
-  //   return function cleanFn() {
-  //     clearInterval(id);
-  //   };
-  // });
-
-  constructor(private stateService: StateService) {}
+  ngOnInit() {
+    // this.observer = this.counterService.getObserver();
+    console.log("total-enrolleds-component, ngOnInit, total: ", this.total);
+  }
 
   ngOnDestroy() {
     // this.stateService.unsubscribe();
+    this.observer.unsubscribe();
   }
 }
