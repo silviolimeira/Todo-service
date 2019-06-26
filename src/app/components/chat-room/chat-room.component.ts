@@ -8,7 +8,8 @@ import { ActivityComponent } from "src/app/controllers/activity.component";
 import { Enrolled } from "src/app/models/enrolled";
 import { StateService } from "src/app/services/state/state.service";
 import { ActivityService } from "src/app/services/activity/activity.service";
-import { Observable as myObservable } from "../bind-callback";
+import { Observable as MyObservable } from "../bind-callback";
+import { Observable as MyObservable1 } from "../../rxjs-core/observable";
 import { defineBase } from "@angular/core/src/render3";
 
 @Component({
@@ -58,7 +59,7 @@ export class ChatRoomComponent implements OnInit {
     let tests = 1;
     if (tests) {
       {
-        let fn = myObservable.bindCallBack(cb => {
+        let fn = MyObservable.bindCallBack(cb => {
           setTimeout(() => cb("sicemal"), 3000);
         });
 
@@ -82,6 +83,15 @@ export class ChatRoomComponent implements OnInit {
         );
 
         setTimeout(() => subscription.unsubscribe(), 10000);
+      }
+
+      {
+        // test rxjs-core/Observer.ts
+
+        let stream$ = MyObservable1.create(observer => observer.next(1)); //1
+        let subscription = stream$.subscribe(data => {
+          console.log("Observer with create, data: ", data);
+        });
       }
     }
   }
