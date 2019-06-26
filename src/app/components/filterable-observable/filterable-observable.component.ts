@@ -20,16 +20,16 @@ export class FilterableObservableComponent implements OnInit {
 
   constructor(private cdr: ChangeDetectorRef) {
     // this.numbers = [];
-    this.sequence = new Observable(this.sequenceSubscriber);
+    // this.sequence = new Observable(this.sequenceSubscriber);
   }
 
-  sequenceSubscriber(observer) {
-    observer.next(11);
-    observer.next(22);
-    observer.next(33);
-    observer.complete();
-    return { unsubscribe() {} };
-  }
+  // sequenceSubscriber(observer) {
+  //   observer.next(11);
+  //   observer.next(22);
+  //   observer.next(33);
+  //   observer.complete();
+  //   return { unsubscribe() {} };
+  // }
 
   ngOnInit() {
     // this.numbers.push(1);
@@ -47,8 +47,7 @@ export class FilterableObservableComponent implements OnInit {
     stream$.subscribe(data => {
       console.log("FilterableObservable, MyObservable2 - data*: ", data);
       this.numbers.push(data);
+      this.sequence = of(this.numbers);
     });
-
-    this.sequence = of(this.numbers);
   }
 }
