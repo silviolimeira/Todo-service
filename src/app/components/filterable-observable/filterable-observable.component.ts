@@ -16,6 +16,7 @@ export class FilterableObservableComponent implements OnInit {
 
   list: Observable<string[]>;
   sequence: Observable<any>;
+  numbers: Array<number> = [];
 
   constructor(private cdr: ChangeDetectorRef) {
     // this.numbers = [];
@@ -42,11 +43,12 @@ export class FilterableObservableComponent implements OnInit {
       observer.next(3);
       observer.next(4);
       observer.next(5);
-    }).filter(x => x > 2);
-    stream$.subscribe(data =>
-      console.log("FilterableObservable, MyObservable2 - data*: ", data)
-    );
+    }).filter(x => x > 3);
+    stream$.subscribe(data => {
+      console.log("FilterableObservable, MyObservable2 - data*: ", data);
+      this.numbers.push(data);
+    });
 
-    this.sequence = of([111, 222, 333]);
+    this.sequence = of(this.numbers);
   }
 }
