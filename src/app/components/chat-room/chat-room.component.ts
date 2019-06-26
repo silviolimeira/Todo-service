@@ -3,11 +3,13 @@ import { Component, OnInit } from "@angular/core";
 import { Socket } from "ng-socket-io";
 import { Router, ActivatedRoute } from "@angular/router";
 import { ToastController } from "@ionic/angular";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { ActivityComponent } from "src/app/controllers/activity.component";
 import { Enrolled } from "src/app/models/enrolled";
 import { StateService } from "src/app/services/state/state.service";
 import { ActivityService } from "src/app/services/activity/activity.service";
+import { Observable as myObservable } from "../bind-callback";
+import { defineBase } from "@angular/core/src/render3";
 
 @Component({
   selector: "app-chat-room",
@@ -52,6 +54,36 @@ export class ChatRoomComponent implements OnInit {
         this.activity.add(user);
       }
     });
+
+    let tests = 1;
+    if (tests) {
+      {
+        let fn = myObservable.bindCallBack(cb => {
+          setTimeout(() => cb("sicemal"), 3000);
+        });
+
+        const stream$ = fn();
+        stream$.subscribe(data => console.log("data", data));
+      }
+
+      {
+        let stream1$ = Observable.create(observer => {
+          let counter = 0;
+          let id = setInterval(() => {
+            observer.next(counter++);
+          }, 1000);
+          return function cleanUpFn() {
+            clearInterval(id);
+          };
+        });
+
+        let subscription = stream1$.subscribe(data =>
+          console.log("timer interval, data: ", data)
+        );
+
+        setTimeout(() => subscription.unsubscribe(), 10000);
+      }
+    }
   }
 
   sendMessage() {
