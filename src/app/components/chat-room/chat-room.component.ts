@@ -11,6 +11,10 @@ import { ActivityService } from "src/app/services/activity/activity.service";
 import { Observable as MyObservable } from "../bind-callback";
 import { Observable as MyObservable1 } from "../../rxjs-core/observable";
 import { MyObservableWithSubscription } from "../../rxjs-core/observer-with-subscription";
+import {
+  FilterableObservable,
+  MyObservable as MyObservable2
+} from "../../rxjs-core/operator/observable";
 import { defineBase } from "@angular/core/src/render3";
 
 @Component({
@@ -113,6 +117,20 @@ export class ChatRoomComponent implements OnInit {
         });
 
         setTimeout(() => subscription.unsubscribe(), 5000);
+      }
+
+      {
+        // Adding oberators
+        // rxjs-core/operator/Observable.ts
+        const stream$ = new MyObservable2(observer => {
+          observer.next(1);
+          observer.next(2);
+          observer.next(3);
+        }).filter(x => x > 2);
+
+        stream$.subscribe(data =>
+          console.log("FilterableObservable, MyObservable2 - data: ", data)
+        );
       }
     }
   }
