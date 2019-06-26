@@ -11,6 +11,7 @@ import { LoginChatComponent } from "./login-chat/login-chat.component";
 import { ControllersModule } from "../controllers/controllers.module";
 import { TotalEnrolledsComponent } from "./total-enrolleds/total-enrolleds.component";
 import { EnrolledsComponent } from "./enrolleds/enrolleds.component";
+import { FilterableObservableComponent } from "./filterable-observable/filterable-observable.component";
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { EnrolledsComponent } from "./enrolleds/enrolleds.component";
     ChatRoomComponent,
     LoginChatComponent,
     TotalEnrolledsComponent,
-    EnrolledsComponent
+    EnrolledsComponent,
+    FilterableObservableComponent
   ],
   exports: [
     ItemsComponent,
@@ -44,7 +46,8 @@ import { EnrolledsComponent } from "./enrolleds/enrolleds.component";
     ChatRoomComponent,
     LoginChatComponent,
     TotalEnrolledsComponent,
-    EnrolledsComponent
+    EnrolledsComponent,
+    FilterableObservableComponent
   ]
 })
 export class ComponentsModule {}
