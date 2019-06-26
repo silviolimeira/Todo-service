@@ -10,6 +10,7 @@ import { StateService } from "src/app/services/state/state.service";
 import { ActivityService } from "src/app/services/activity/activity.service";
 import { Observable as MyObservable } from "../bind-callback";
 import { Observable as MyObservable1 } from "../../rxjs-core/observable";
+import { MyObservableWithSubscription } from "../../rxjs-core/observer-with-subscription";
 import { defineBase } from "@angular/core/src/render3";
 
 @Component({
@@ -92,6 +93,26 @@ export class ChatRoomComponent implements OnInit {
         let subscription = stream$.subscribe(data => {
           console.log("Observer with create, data: ", data);
         });
+      }
+
+      {
+        // test rxjs-core/Observer-with-subscription.ts
+
+        let streamWithSubscription$ = MyObservableWithSubscription.create(
+          observer => {
+            let counter = 0;
+            let id = setInterval(() => observer.next(counter++), 1000);
+            return function cleanUpFn() {
+              clearInterval(id);
+            };
+          }
+        );
+
+        const subscription = streamWithSubscription$.subscribe(data => {
+          console.log("MyObservableWithSubscription, data: ", data);
+        });
+
+        setTimeout(() => subscription.unsubscribe(), 5000);
       }
     }
   }
