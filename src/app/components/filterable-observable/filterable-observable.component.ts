@@ -69,7 +69,7 @@ export class FilterableObservableComponent implements OnInit {
     //   this.sequence = of(this.numbers);
     // });
 
-    // working with static values and observable(update template component) using tap
+    // working with static values and observable(update template component) using pipe(map and tap(next, error, complete))
     const source = of(1, 2, 3, 4, 5);
     const example = source
       .pipe(
@@ -91,3 +91,11 @@ export class FilterableObservableComponent implements OnInit {
       });
   }
 }
+
+// Most operators in RxJS are depicted by a marble diagram on the site RxMarbles http://rxmarbles.com/
+
+// Here's an example of a marble diagram:
+
+// --(1)--(2)--(3)---->
+// MANIPULATION
+// -------(2)--------->
