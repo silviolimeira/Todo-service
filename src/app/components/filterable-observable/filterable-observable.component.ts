@@ -99,3 +99,10 @@ export class FilterableObservableComponent implements OnInit {
 // --(1)--(2)--(3)---->
 // MANIPULATION
 // -------(2)--------->
+
+// RxFiddle access on http://rxfiddle.net and try this on the left, and see the marble diagram on the right
+
+// let stream = Rx.Observable.of(1,2,3,4).
+// filter(val => val > 2);
+
+// stream.subscribe(next => {data => console.log(data)}, error=> {});
