@@ -5,7 +5,7 @@ import {
   MyObservable as MyObservable2
 } from "../../rxjs-core/operator/observable";
 import { Observable, Observer, of } from "rxjs";
-import { map, filter } from "rxjs/operators";
+import { map, filter, tap } from "rxjs/operators";
 
 @Component({
   selector: "app-filterable-observable",
@@ -56,8 +56,14 @@ export class FilterableObservableComponent implements OnInit {
     // });
 
     // working with static values and observer using pipe(map and filter)
+
     const staticValuesStream$ = of(1, 2, 3, 4, 5)
+      // debuging data with tap istead old 'do'
+      .pipe(
+        tap(data => console.log("'do' tap data, before map(mata + 1): ", data))
+      )
       .pipe(map(data => data + 1))
+      .pipe(tap(data => console.log("'do' tap data, filter(data % 2): ", data)))
       .pipe(filter(data => data % 2 === 0));
     staticValuesStream$.subscribe(data => {
       this.numbers.push(data);
