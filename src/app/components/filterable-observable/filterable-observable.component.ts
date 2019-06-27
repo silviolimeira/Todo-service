@@ -55,19 +55,39 @@ export class FilterableObservableComponent implements OnInit {
     //   this.sequence = of(this.numbers);
     // });
 
-    // working with static values and observer using pipe(map and filter)
+    // // working with static values and observer using pipe(map and filter)
+    // const staticValuesStream$ = of(1, 2, 3, 4, 5)
+    //   // debuging (and possible other uses), data with tap istead old 'do'
+    //   .pipe(
+    //     tap(data => console.log("'do' tap data, before map(mata + 1): ", data))
+    //   )
+    //   .pipe(map(data => data + 1))
+    //   .pipe(tap(data => console.log("'do' tap data, filter(data % 2): ", data)))
+    //   .pipe(filter(data => data % 2 === 0));
+    // staticValuesStream$.subscribe(data => {
+    //   this.numbers.push(data);
+    //   this.sequence = of(this.numbers);
+    // });
 
-    const staticValuesStream$ = of(1, 2, 3, 4, 5)
-      // debuging data with tap istead old 'do'
+    // working with static values and observable(update template component) using tap
+    const source = of(1, 2, 3, 4, 5);
+    const example = source
       .pipe(
-        tap(data => console.log("'do' tap data, before map(mata + 1): ", data))
+        map(val => val + 10),
+        tap({
+          next: val => {
+            console.log("on next", val);
+          },
+          error: error => {
+            console.log("on error", error.message);
+          },
+          complete: () => console.log("on complete")
+        })
       )
-      .pipe(map(data => data + 1))
-      .pipe(tap(data => console.log("'do' tap data, filter(data % 2): ", data)))
-      .pipe(filter(data => data % 2 === 0));
-    staticValuesStream$.subscribe(data => {
-      this.numbers.push(data);
-      this.sequence = of(this.numbers);
-    });
+      .subscribe(val => {
+        console.log(val),
+          this.numbers.push(val),
+          (this.sequence = of(this.numbers));
+      });
   }
 }

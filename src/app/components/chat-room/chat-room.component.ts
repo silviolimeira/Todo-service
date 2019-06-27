@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { Socket } from "ng-socket-io";
 import { Router, ActivatedRoute } from "@angular/router";
 import { ToastController } from "@ionic/angular";
-import { Observable, Subscription, Observer } from "rxjs";
+import { Observable, Subscription, Observer, of } from "rxjs";
 import { ActivityComponent } from "src/app/controllers/activity.component";
 import { Enrolled } from "src/app/models/enrolled";
 import { StateService } from "src/app/services/state/state.service";
