@@ -47,6 +47,13 @@ export class FilterableObservableComponent implements OnInit {
     stream$.subscribe(data => {
       console.log("FilterableObservable, MyObservable2 - data*: ", data);
       this.numbers.push(data);
+      // this.sequence = of(this.numbers);
+    });
+
+    const staticValuesStream$ = of(1, 22, 333, 4444);
+    staticValuesStream$.subscribe(data => {
+      console.log("staticValuesStream$, value: ", data);
+      this.numbers.push(data);
       this.sequence = of(this.numbers);
     });
   }
