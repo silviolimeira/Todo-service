@@ -9,4 +9,8 @@ let keyStream$ = fromEvent(elem, "keyup").pipe(map(ev => ev.key));
 
 keyStream$.subscribe(key => console.log(key));
 
+fetch("https://swapi.co/api/people/1")
+  .then(data => data.json())
+  .then(data => console.log("data: ", data));
+
 // emits entered key chars
