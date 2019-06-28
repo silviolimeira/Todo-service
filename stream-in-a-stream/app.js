@@ -36,7 +36,7 @@
 
 // // emits entered key chars
 
-// example 2: from(fetch, flatMap with subscribe)
+// example 2: from(fetch).pipe(flatMap(from)) return stream that's is subscribe to capture json)
 const { fromEvent, observable, from } = rxjs;
 const { map, filter, mergeMap, flatMap } = rxjs.operators;
 
