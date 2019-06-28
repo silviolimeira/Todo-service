@@ -12,11 +12,9 @@ import { ComponentsModule } from "./components/components.module";
 import { SocketIoConfig, SocketIoModule } from "ng-socket-io";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
-import {
-  ControllersModule
-} from "./controllers/controllers.module";
+import { ControllersModule } from "./controllers/controllers.module";
 
-const config: SocketIoConfig = { url: "http://localhost:3001", options: {} };
+const config: SocketIoConfig = { url: "http://172.16.0.50:3001", options: {} };
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,4 +1,5 @@
 // https://github.com/ReactiveX/rxjs#cdn
+// https://www.learnrxjs.io/operators/transformation/switchmap.html
 
 const { fromEvent, observable, from } = rxjs;
 const { map, filter, mergeMap } = rxjs.operators;
